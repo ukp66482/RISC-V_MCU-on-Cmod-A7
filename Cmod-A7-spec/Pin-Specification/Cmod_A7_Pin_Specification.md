@@ -114,7 +114,7 @@ All 4 interrupts are grouped into a single 4-bit AXI GPIO instance (INT_0_3) wit
 | Signal | DIP Pin | FPGA Pin | AXI Base Address | IP Instance |
 |--------|---------|----------|-----------------|-------------|
 | PWM_0 | 10 | J3 | 0x41C1_0000 | PWM_0 (axi_timer) |
-| PWM_1 | 34 | W3 | 0x41C2_0000 | PWM1 (axi_timer) |
+| PWM_1 | 34 | W3 | 0x41C2_0000 | PWM_1 (axi_timer) |
 | PWM_2 | 40 | W4 | 0x41C3_0000 | PWM_2 (axi_timer) |
 
 ---
