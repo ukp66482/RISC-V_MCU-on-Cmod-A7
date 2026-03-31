@@ -1,0 +1,224 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1020" height="620" font-family="Segoe UI, Arial, sans-serif" font-size="11">
+
+  <defs>
+    <marker id="a" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#4a148c"/>
+    </marker>
+    <marker id="b" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#1b5e20"/>
+    </marker>
+    <marker id="c" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#37474f"/>
+    </marker>
+    <marker id="d" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#1565c0"/>
+    </marker>
+    <marker id="e" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 z" fill="#bf360c"/>
+    </marker>
+  </defs>
+
+  <!-- ── Background ── -->
+  <rect width="1020" height="620" fill="#f5f5f5"/>
+
+  <!-- ══════════════════════════════════════════
+       CLOCK
+  ══════════════════════════════════════════ -->
+  <rect x="370" y="12" width="200" height="38" rx="6" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.5"/>
+  <text x="470" y="28" text-anchor="middle" font-weight="bold" fill="#1565c0">12 MHz Oscillator</text>
+  <text x="470" y="43" text-anchor="middle" fill="#1565c0" font-size="10">Clocking Wizard → 100 MHz PLL</text>
+
+  <!-- Clock → Processor -->
+  <line x1="470" y1="50" x2="470" y2="72" stroke="#1565c0" stroke-width="1.5" marker-end="url(#d)"/>
+
+  <!-- ══════════════════════════════════════════
+       PROCESSOR SUBSYSTEM
+  ══════════════════════════════════════════ -->
+  <rect x="148" y="72" width="556" height="188" rx="8" fill="#fff9e6" stroke="#f57f17" stroke-width="2"/>
+  <text x="180" y="90" font-weight="bold" fill="#f57f17" font-size="11">Processor Subsystem</text>
+
+  <!-- MicroBlaze -->
+  <rect x="166" y="96" width="226" height="60" rx="5" fill="#ffe082" stroke="#e65100" stroke-width="1.5"/>
+  <text x="279" y="115" text-anchor="middle" font-weight="bold" fill="#3a3a3a">MicroBlaze RISC-V</text>
+  <text x="279" y="131" text-anchor="middle" fill="#555" font-size="10">32-bit RV32IM + Bitmanip</text>
+  <text x="279" y="147" text-anchor="middle" fill="#555" font-size="10">100 MHz System Clock</text>
+
+  <!-- MDM -->
+  <rect x="410" y="96" width="148" height="60" rx="5" fill="#ffe082" stroke="#e65100" stroke-width="1.5"/>
+  <text x="484" y="120" text-anchor="middle" font-weight="bold" fill="#3a3a3a">MDM Debug</text>
+  <text x="484" y="138" text-anchor="middle" fill="#555" font-size="10">JTAG Interface</text>
+
+  <!-- MDM → USB arrow (horizontal) -->
+  <line x1="558" y1="126" x2="800" y2="126" stroke="#37474f" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#c)"/>
+
+  <!-- INTC -->
+  <rect x="166" y="172" width="392" height="52" rx="5" fill="#ffe082" stroke="#e65100" stroke-width="1.5"/>
+  <text x="362" y="193" text-anchor="middle" font-weight="bold" fill="#3a3a3a">AXI Interrupt Controller  (6-channel)</text>
+  <text x="362" y="212" text-anchor="middle" fill="#555" font-size="10">UART×2 · Timer×3 · GPIO-INT  →  MicroBlaze IRQ</text>
+
+  <!-- ══════════════════════════════════════════
+       BLOCK RAM (left of processor)
+  ══════════════════════════════════════════ -->
+  <rect x="18" y="112" width="112" height="52" rx="5" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <text x="74" y="133" text-anchor="middle" font-weight="bold" fill="#2e7d32">Block RAM</text>
+  <text x="74" y="150" text-anchor="middle" fill="#2e7d32" font-size="10">128 KB (LMB)</text>
+
+  <!-- BRAM ↔ MicroBlaze (LMB, bidirectional) -->
+  <line x1="130" y1="138" x2="163" y2="138" stroke="#1b5e20" stroke-width="1.8" marker-end="url(#b)"/>
+  <line x1="163" y1="132" x2="130" y2="132" stroke="#1b5e20" stroke-width="1.8" marker-end="url(#b)"/>
+  <text x="146" y="128" text-anchor="middle" fill="#2e7d32" font-size="9" font-weight="bold">LMB</text>
+
+  <!-- ══════════════════════════════════════════
+       AXI connection: Processor → Bus
+  ══════════════════════════════════════════ -->
+  <line x1="420" y1="260" x2="420" y2="296" stroke="#4a148c" stroke-width="2" marker-end="url(#a)"/>
+  <text x="430" y="282" fill="#4a148c" font-size="10" font-weight="bold">AXI</text>
+
+  <!-- ══════════════════════════════════════════
+       AXI SmartConnect Bus (horizontal bar)
+  ══════════════════════════════════════════ -->
+  <rect x="18" y="296" width="752" height="30" rx="4" fill="#4a148c"/>
+  <text x="394" y="316" text-anchor="middle" fill="white" font-weight="bold" font-size="12">AXI SmartConnect  —  20 Peripheral Ports</text>
+
+  <!-- ══════════════════════════════════════════
+       Bus → Peripheral vertical connectors
+  ══════════════════════════════════════════ -->
+  <!-- GPIO center=96 -->
+  <line x1="96"  y1="326" x2="96"  y2="352" stroke="#c62828" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- Timer center=248 -->
+  <line x1="248" y1="326" x2="248" y2="352" stroke="#283593" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- UART center=400 -->
+  <line x1="400" y1="326" x2="400" y2="352" stroke="#00695c" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- Memory center=552 -->
+  <line x1="552" y1="326" x2="552" y2="352" stroke="#4a148c" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- XADC center=704 -->
+  <line x1="704" y1="326" x2="704" y2="352" stroke="#bf360c" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- ══════════════════════════════════════════
+       PERIPHERAL GROUPS  (y=352)
+  ══════════════════════════════════════════ -->
+
+  <!-- ── GPIO ── x=18, w=156, cx=96 -->
+  <rect x="18"  y="352" width="156" height="176" rx="6" fill="#fce4ec" stroke="#c62828" stroke-width="1.5"/>
+  <text x="96"  y="370" text-anchor="middle" font-weight="bold" fill="#c62828">GPIO</text>
+  <!-- On-board -->
+  <rect x="26"  y="376" width="140" height="42" rx="4" fill="#f8bbd0" stroke="#c62828" stroke-width="1"/>
+  <text x="96"  y="392" text-anchor="middle" fill="#3a3a3a" font-size="10">On-board</text>
+  <text x="96"  y="407" text-anchor="middle" fill="#555" font-size="9">LED×2 · RGB · Button</text>
+  <!-- DIP GPIO -->
+  <rect x="26"  y="424" width="140" height="42" rx="4" fill="#f8bbd0" stroke="#c62828" stroke-width="1"/>
+  <text x="96"  y="440" text-anchor="middle" fill="#3a3a3a" font-size="10">DIP GPIO</text>
+  <text x="96"  y="455" text-anchor="middle" fill="#555" font-size="9">Group A/B/C/D  (7-bit × 4)</text>
+  <!-- Interrupt -->
+  <rect x="26"  y="472" width="140" height="42" rx="4" fill="#f8bbd0" stroke="#c62828" stroke-width="1"/>
+  <text x="96"  y="488" text-anchor="middle" fill="#3a3a3a" font-size="10">Ext Interrupts</text>
+  <text x="96"  y="503" text-anchor="middle" fill="#555" font-size="9">INTR 0–3</text>
+
+  <!-- ── Timer / PWM ── x=182, w=132, cx=248 -->
+  <rect x="182" y="352" width="132" height="176" rx="6" fill="#e8eaf6" stroke="#283593" stroke-width="1.5"/>
+  <text x="248" y="370" text-anchor="middle" font-weight="bold" fill="#283593">Timer / PWM</text>
+  <rect x="190" y="376" width="116" height="56" rx="4" fill="#c5cae9" stroke="#283593" stroke-width="1"/>
+  <text x="248" y="396" text-anchor="middle" fill="#3a3a3a" font-size="10">Timer × 3</text>
+  <text x="248" y="411" text-anchor="middle" fill="#555" font-size="9">32-bit · w/ Interrupt</text>
+  <text x="248" y="424" text-anchor="middle" fill="#555" font-size="9">0x41C0/C4/C5_0000</text>
+  <rect x="190" y="440" width="116" height="72" rx="4" fill="#c5cae9" stroke="#283593" stroke-width="1"/>
+  <text x="248" y="458" text-anchor="middle" fill="#3a3a3a" font-size="10">PWM × 3</text>
+  <text x="248" y="473" text-anchor="middle" fill="#555" font-size="9">axi_timer PWM mode</text>
+  <text x="248" y="486" text-anchor="middle" fill="#555" font-size="9">DIP Pin 10 / 34 / 40</text>
+  <text x="248" y="499" text-anchor="middle" fill="#555" font-size="9">0x41C1/C2/C3_0000</text>
+
+  <!-- ── UART ── x=322, w=156, cx=400 -->
+  <rect x="322" y="352" width="156" height="176" rx="6" fill="#e0f7fa" stroke="#00695c" stroke-width="1.5"/>
+  <text x="400" y="370" text-anchor="middle" font-weight="bold" fill="#00695c">UART  (16550)</text>
+  <rect x="330" y="376" width="140" height="60" rx="4" fill="#b2ebf2" stroke="#00695c" stroke-width="1"/>
+  <text x="400" y="395" text-anchor="middle" fill="#3a3a3a" font-size="10">UART USB</text>
+  <text x="400" y="410" text-anchor="middle" fill="#555" font-size="9">Micro-USB connector</text>
+  <text x="400" y="425" text-anchor="middle" fill="#555" font-size="9">0x44A0_0000</text>
+  <rect x="330" y="444" width="140" height="68" rx="4" fill="#b2ebf2" stroke="#00695c" stroke-width="1"/>
+  <text x="400" y="462" text-anchor="middle" fill="#3a3a3a" font-size="10">UART External</text>
+  <text x="400" y="477" text-anchor="middle" fill="#555" font-size="9">DIP Pin 11 (TX) / 12 (RX)</text>
+  <text x="400" y="492" text-anchor="middle" fill="#555" font-size="9">0x44A1_0000</text>
+
+  <!-- ── Memory ── x=486, w=132, cx=552 -->
+  <rect x="486" y="352" width="132" height="176" rx="6" fill="#f3e5f5" stroke="#4a148c" stroke-width="1.5"/>
+  <text x="552" y="370" text-anchor="middle" font-weight="bold" fill="#4a148c">Memory</text>
+  <rect x="494" y="376" width="116" height="56" rx="4" fill="#e1bee7" stroke="#4a148c" stroke-width="1"/>
+  <text x="552" y="395" text-anchor="middle" fill="#3a3a3a" font-size="10">QSPI Flash</text>
+  <text x="552" y="410" text-anchor="middle" fill="#555" font-size="9">Non-volatile storage</text>
+  <text x="552" y="423" text-anchor="middle" fill="#555" font-size="9">0x44A2_0000</text>
+  <rect x="494" y="440" width="116" height="72" rx="4" fill="#e1bee7" stroke="#4a148c" stroke-width="1"/>
+  <text x="552" y="458" text-anchor="middle" fill="#3a3a3a" font-size="10">SRAM  512 KB</text>
+  <text x="552" y="473" text-anchor="middle" fill="#555" font-size="9">Cellular RAM (axi_emc)</text>
+  <text x="552" y="486" text-anchor="middle" fill="#555" font-size="9">32 MB addr range</text>
+  <text x="552" y="499" text-anchor="middle" fill="#555" font-size="9">0x6000_0000</text>
+
+  <!-- ── XADC ── x=626, w=144, cx=698 -->
+  <rect x="626" y="352" width="144" height="116" rx="6" fill="#fff3e0" stroke="#bf360c" stroke-width="1.5"/>
+  <text x="698" y="370" text-anchor="middle" font-weight="bold" fill="#bf360c">XADC</text>
+  <rect x="634" y="376" width="128" height="80" rx="4" fill="#ffe0b2" stroke="#bf360c" stroke-width="1"/>
+  <text x="698" y="394" text-anchor="middle" fill="#3a3a3a" font-size="10">12-bit ADC</text>
+  <text x="698" y="409" text-anchor="middle" fill="#555" font-size="9">500 KSPS total</text>
+  <text x="698" y="422" text-anchor="middle" fill="#555" font-size="9">100 KSPS / channel</text>
+  <text x="698" y="437" text-anchor="middle" fill="#555" font-size="9">2 ext + 3 internal ch</text>
+  <text x="698" y="450" text-anchor="middle" fill="#555" font-size="9">0x44A3_0000</text>
+
+  <!-- ══════════════════════════════════════════
+       DIP CONNECTOR BAR (bottom)
+  ══════════════════════════════════════════ -->
+  <rect x="18" y="552" width="464" height="34" rx="5" fill="#546e7a"/>
+  <text x="250" y="574" text-anchor="middle" fill="white" font-weight="bold" font-size="12">48-pin DIP Connector  (LVCMOS33)</text>
+
+  <!-- GPIO DIP → DIP bar -->
+  <line x1="96"  y1="528" x2="96"  y2="552" stroke="#c62828" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- Timer/PWM → DIP bar -->
+  <line x1="248" y1="528" x2="248" y2="552" stroke="#283593" stroke-width="1.5" marker-end="url(#a)"/>
+  <!-- UART ext → DIP bar -->
+  <line x1="400" y1="528" x2="400" y2="552" stroke="#00695c" stroke-width="1.5" marker-end="url(#a)"/>
+
+  <!-- ══════════════════════════════════════════
+       ANALOG INPUTS (below XADC)
+  ══════════════════════════════════════════ -->
+  <rect x="626" y="492" width="144" height="40" rx="5" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+  <text x="698" y="509" text-anchor="middle" font-weight="bold" fill="#37474f">Analog Inputs</text>
+  <text x="698" y="524" text-anchor="middle" fill="#555" font-size="9">ADC_0/1 · DIP Pin 15/16 · 0–3.3 V</text>
+
+  <!-- Analog → XADC -->
+  <line x1="698" y1="492" x2="698" y2="468" stroke="#bf360c" stroke-width="1.5" marker-end="url(#e)"/>
+
+  <!-- ══════════════════════════════════════════
+       MICRO-USB (right side)
+  ══════════════════════════════════════════ -->
+  <rect x="800" y="96" width="202" height="60" rx="6" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+  <text x="901" y="118" text-anchor="middle" font-weight="bold" fill="#37474f">Micro-USB Connector</text>
+  <text x="901" y="134" text-anchor="middle" fill="#555" font-size="10">JTAG Debug  (MDM)</text>
+  <text x="901" y="148" text-anchor="middle" fill="#555" font-size="10">UART0  (STDIN / STDOUT)</text>
+
+  <!-- UART USB → USB box:
+       1. exit UART group right edge at y=406
+       2. slip through 8px gap (x=478-486) between UART and Memory, go down to y=605
+       3. run right along y=605 (below DIP bar, below Analog) to x=820
+       4. climb up outside all boxes at x=820 to y=60
+       5. run right to USB center x=901
+       6. enter USB box from top at y=96 -->
+  <polyline points="478,406 484,406 484,605 820,605 820,60 901,60 901,96"
+            fill="none" stroke="#37474f" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#c)"/>
+
+  <!-- ══════════════════════════════════════════
+       LEGEND
+  ══════════════════════════════════════════ -->
+  <rect x="800" y="200" width="202" height="140" rx="6" fill="#ffffff" stroke="#bdbdbd" stroke-width="1"/>
+  <text x="901" y="218" text-anchor="middle" font-weight="bold" fill="#3a3a3a">Legend</text>
+  <line x1="814" y1="234" x2="844" y2="234" stroke="#4a148c" stroke-width="2" marker-end="url(#a)"/>
+  <text x="852" y="238" fill="#3a3a3a" font-size="10">AXI Bus</text>
+  <line x1="814" y1="254" x2="844" y2="254" stroke="#1b5e20" stroke-width="1.8" marker-end="url(#b)"/>
+  <text x="852" y="258" fill="#3a3a3a" font-size="10">LMB (Local Memory Bus)</text>
+  <line x1="814" y1="274" x2="844" y2="274" stroke="#1565c0" stroke-width="1.5" marker-end="url(#d)"/>
+  <text x="852" y="278" fill="#3a3a3a" font-size="10">Clock Signal</text>
+  <line x1="814" y1="294" x2="844" y2="294" stroke="#bf360c" stroke-width="1.5" marker-end="url(#e)"/>
+  <text x="852" y="298" fill="#3a3a3a" font-size="10">Analog Input</text>
+  <line x1="814" y1="314" x2="844" y2="314" stroke="#37474f" stroke-width="1.3" stroke-dasharray="5,3" marker-end="url(#c)"/>
+  <text x="852" y="318" fill="#3a3a3a" font-size="10">External Interface</text>
+  <rect x="814" y="322" width="12" height="12" fill="#4a148c" rx="2"/>
+  <text x="832" y="332" fill="#3a3a3a" font-size="10">AXI SmartConnect Bus</text>
+
+</svg>

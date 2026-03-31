@@ -6,6 +6,10 @@ A soft-core RISC-V MCU system built on the **Digilent Cmod A7-35T** (Xilinx Arti
 
 This project provides a ready-to-use RISC-V MCU environment on the Cmod A7-35T for the **NCKU Microprocessor Principles and Applications** course. Students write and run firmware targeting a MicroBlaze RISC-V processor with a set of pre-configured peripherals, focusing on software-level interaction such as register programming, interrupt handling, and peripheral control — without needing to deal with FPGA or circuit-level details.
 
+### System Architecture
+
+![System Architecture](docs/images/system_architecture.svg)
+
 ### Key Specifications
 
 | Item | Detail |
@@ -16,6 +20,8 @@ This project provides a ready-to-use RISC-V MCU environment on the Cmod A7-35T f
 | Local Memory | 128 KB (Block RAM, 128 KB Instruction + Data, shared True Dual-Port) |
 | Interconnect | AXI SmartConnect (20 peripheral ports) |
 | Toolchain | Vivado & Vitis 2025.2 |
+
+![Cmod A7-35T DIP Pinout](Cmod-A7-spec/Pin-Specification/images/pinout_diagram.png)
 
 ### Peripherals
 
@@ -31,20 +37,29 @@ This project provides a ready-to-use RISC-V MCU environment on the Cmod A7-35T f
 ## Repository Structure
 
 ```
-├── Cmod-A7-spec/          # Board documentation
-│   ├── IP-Specification/  # IP peripheral reference
-│   ├── Pin-Specification/ # Pin mapping & constraints
-│   ├── Kicad_symbol/      # KiCad schematic symbol
-│   ├── Power-Specification/
-│   ├── Cmod-A7-Master.xdc # Constraints file
-│   ├── top.tcl            # Vivado project rebuild script
-│   ├── top.bit            # Pre-built bitstream
-│   └── top_wrapper.xsa    # Hardware export for Vitis
-├── Nexys_version/         # Nexys board variant documentation
-├── workspace-example/     # Vitis firmware examples
-│   ├── GPIO_test/src/     # GPIO peripheral test
-│   ├── PWM_test/src/      # PWM servo motor control
-│   └── UART_test/src/     # UART communication test
+├── Cmod-A7-spec/                    # Board documentation & hardware files
+│   ├── IP-Specification/            # IP peripheral reference
+│   │   └── images/
+│   ├── Pin-Specification/           # Pin mapping & electrical characteristics
+│   │   └── images/
+│   ├── Power-Specification/         # Power rails & supply design
+│   │   └── images/
+│   ├── Kicad_symbol/                # KiCad schematic symbol
+│   ├── Cmod-A7-Master.xdc          # FPGA pin constraints file
+│   ├── top.tcl                      # Vivado project rebuild script
+│   └── top_wrapper.xsa              # Hardware export for Vitis platform
+├── docs/
+│   ├── images/                      # Project-level diagrams
+│   │   └── system_architecture.svg
+│   └── pdf-style.css                # PDF export style (Markdown PDF extension)
+├── Intro/                           # Course introduction slides
+│   ├── RISCV-MCU.pdf
+│   └── RISCV-MCU.pptx
+├── Old_Nexys_version/               # Legacy Nexys board variant (archived)
+├── workspace-example/               # Vitis firmware examples (source only)
+│   ├── GPIO_test/src/               # GPIO peripheral test
+│   ├── PWM_test/src/                # PWM servo motor control
+│   └── UART_test/src/               # UART communication test
 └── .gitignore
 ```
 
