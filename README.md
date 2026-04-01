@@ -6,6 +6,8 @@ A soft-core RISC-V MCU system built on the **Digilent Cmod A7-35T** (Xilinx Arti
 
 This project provides a ready-to-use RISC-V MCU environment on the Cmod A7-35T for the **NCKU Microprocessor Principles and Applications** course. Students write and run firmware targeting a MicroBlaze RISC-V processor with a set of pre-configured peripherals, focusing on software-level interaction such as register programming, interrupt handling, and peripheral control — without needing to deal with FPGA or circuit-level details.
 
+![Digilent Cmod A7-35T](docs/images/cmod-a7-0.png)
+
 ### System Architecture
 
 ![System Architecture](docs/images/system_architecture.svg)
