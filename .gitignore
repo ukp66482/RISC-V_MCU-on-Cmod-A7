@@ -142,6 +142,11 @@ __pycache__/
 # Workspace example – ignore all except .c/.h sources
 ############################################
 workspace-example/*
+!workspace-example/Btn_LED_asm_test/
+workspace-example/Btn_LED_asm_test/*
+!workspace-example/Btn_LED_asm_test/src/
+workspace-example/Btn_LED_asm_test/src/*
+!workspace-example/Btn_LED_asm_test/src/*.S
 !workspace-example/GPIO_test/
 workspace-example/GPIO_test/*
 !workspace-example/GPIO_test/src/
