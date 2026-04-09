@@ -15,8 +15,8 @@
 
 main:
     # Load base addresses into registers
-    lui   t0, 0x40010000          # t0 = 0x40010000 (button base)
-    lui   t1, 0x40000000          # t1 = 0x40000000 (LED base)
+    li   t0, 0x40010000          # t0 = 0x40010000 (button base)
+    li   t1, 0x40000000          # t1 = 0x40000000 (LED base)
 
 loop:
     lw    t2, 0(t0)            # t2 = GPIO_DATA of button

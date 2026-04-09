@@ -119,7 +119,7 @@ After creation, a default `helloworld.c` file is placed in the `src` directory. 
 
 ### 4.2 Add Source Files
 
-Add your source files under the `src` directory (e.g. `gpio_init.c`).
+Add your source files under the `src` directory (e.g. `gpio_init.c`). Assembly files (`.S`) are also supported — add them the same way and they will be compiled and linked together with the rest of the project. See [`workspace-example/Btn_LED_asm_test/`](../../workspace-example/Btn_LED_asm_test/) for an example written entirely in RISC-V assembly.
 
 ![Add Source Files](images/image_11.png)
 
@@ -183,6 +183,10 @@ Wait for the build to complete — confirm the log shows `Platform Build Finishe
 Switch to the application component (e.g. `GPIO_test`) and click **Build**.
 
 Verify the build succeeds and produces the `.elf` file.
+
+> **Note:** During the build, Vitis automatically links in `boot.S` and `crt.o` from the standalone BSP. You do not need to provide them manually.
+> - **`boot.S`** — the first code that runs after reset. It zeros all general-purpose registers (x0–x31), initializes the stack pointer, sets up exception/interrupt vectors, and jumps to the C runtime entry point.
+> - **`crt.o`** (C Runtime) — runs before `main()`. It zeros the BSS segment (uninitialized global variables) and then calls `main()`.
 
 ![Build Application](images/image_18.png)
 
