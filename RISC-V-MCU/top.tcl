@@ -47,10 +47,19 @@ if { [string first $scripts_vivado_version $current_vivado_version] == -1 } {
 # project, but make sure you do not have an existing project
 # <./myproj/project_1.xpr> in the current working folder.
 
+# Add local board files to Vivado's board repository path
+set board_repo_path [file normalize "$script_folder/../Cmod-A7-spec/Board-Files"]
+set current_repo_paths [get_param board.repoPaths]
+if { [lsearch $current_repo_paths $board_repo_path] == -1 } {
+   set_param board.repoPaths [concat $current_repo_paths [list $board_repo_path]]
+}
+
+set board_part_id "digilentinc.com:cmod_a7-35t:part0:1.2"
+
 set list_projs [get_projects -quiet]
 if { $list_projs eq "" } {
    create_project RISC-V-MCU $script_folder -part xc7a35tcpg236-1
-   set_property BOARD_PART digilentinc.com:cmod_a7-35t:part0:1.2 [current_project]
+   set_property BOARD_PART $board_part_id [current_project]
 }
 
 
