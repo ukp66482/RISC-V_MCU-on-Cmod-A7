@@ -756,7 +756,7 @@ if { [file exists $xdc_file] } {
 ##################################################################
 
 make_wrapper -files [get_files ${design_name}.bd] -top
-add_files -norecurse [glob $script_folder/RISC-V-MCU.srcs/sources_1/bd/${design_name}/hdl/${design_name}_wrapper.v]
+add_files -norecurse [glob $script_folder/RISC-V-MCU.gen/sources_1/bd/${design_name}/hdl/${design_name}_wrapper.v]
 set_property top ${design_name}_wrapper [current_fileset]
 common::send_gid_msg -ssname BD::TCL -id 2012 -severity "INFO" "HDL wrapper created and set as top."
 
