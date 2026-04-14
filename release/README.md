@@ -15,4 +15,4 @@ This directory contains pre-built outputs for the MicroBlaze RISC-V MCU design o
 
 Open Vitis 2025.2 and create a new platform using `top_wrapper.xsa`. Select **standalone** OS and **microblaze_riscv_0** as the processor.
 
-> If you need to modify the hardware design, use `RISC-V-MCU/top.tcl` to rebuild the Vivado project from source.
+> If you need to modify the hardware design, use `RISC-V-MCU/recreate_project.tcl` to rebuild the Vivado project from source.
