@@ -143,7 +143,7 @@
   <rect x="486" y="352" width="132" height="176" rx="6" fill="#f3e5f5" stroke="#4a148c" stroke-width="1.5"/>
   <text x="552" y="370" text-anchor="middle" font-weight="bold" fill="#4a148c">Memory</text>
   <rect x="494" y="376" width="116" height="56" rx="4" fill="#e1bee7" stroke="#4a148c" stroke-width="1"/>
-  <text x="552" y="395" text-anchor="middle" fill="#3a3a3a" font-size="10">QSPI Flash</text>
+  <text x="552" y="395" text-anchor="middle" fill="#3a3a3a" font-size="10">QSPI Flash  4 MB</text>
   <text x="552" y="410" text-anchor="middle" fill="#555" font-size="9">Non-volatile storage</text>
   <text x="552" y="423" text-anchor="middle" fill="#555" font-size="9">0x44A2_0000</text>
   <rect x="494" y="440" width="116" height="72" rx="4" fill="#e1bee7" stroke="#4a148c" stroke-width="1"/>
